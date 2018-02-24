@@ -10,15 +10,15 @@ RSpec.describe UrlsController, type: :controller do
 
     context 'POST request to /short_url' do
       it 'returns a shortened url' do
-
+        expect(response[:url]).to exist
       end
 
       it 'returns the original url' do
-
+        expect(response[:short_url]).to exist
       end
 
       it 'returns status code 200' do
-
+        expect(response).to have_http_status(200)
       end
     end
   end
