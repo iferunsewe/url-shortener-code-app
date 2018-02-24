@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe UrlsController, type: :controller do
   describe '#short_url' do
     before do
-      headers = { "CONTENT_TYPE" => "application/json" }
+      headers = { "Content-Type" => "application/json" }
       request.headers.merge! headers
-      post 'short_url', params: {url: 'http://www.looongurl.com'}
+      post 'short_url', {params: {url: 'http://www.looongurl.com'}, format: :json}
     end
 
     context 'POST request to /short_url' do
