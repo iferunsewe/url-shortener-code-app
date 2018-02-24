@@ -12,7 +12,7 @@ RSpec.describe UrlsController, type: :controller do
       end
 
       it 'returns status code 200' do
-        
+
       end
     end
   end
