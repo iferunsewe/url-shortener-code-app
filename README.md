@@ -1,24 +1,39 @@
-# README
+# Shorten URL README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This small application should you shorten your url.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Please run the following commands to get start this application.
 
-* System dependencies
+```
+git clone git@github.com:iferunsewe/url-shortener-code-app.git
+cd url-shortener-code-app
+bundle install
+bundle exec rails server
 
-* Configuration
+```
 
-* Database creation
+## Usage
 
-* Database initialization
+Once you've started the application, go to your browser and navigate to `http://localhost:3000`
 
-* How to run the test suite
+Enter a url and you should receive a shortened url.
 
-* Services (job queues, cache servers, search engines, etc.)
+You can also run requests from the command line:
 
-* Deployment instructions
+- To get a shortened url:
 
-* ...
+`curl localhost:3000/short_url -XPOST -d '{ "url": <url_requested> }' -H "Content-Type: application/json"`
+
+- To be redirect to the original url from a shortened url:
+
+`curl -v localhost:4000/<shortened_url>`
+
+## Tests
+
+To run all the tests:
+
+`bundle exec rspec`
+
+Thank you!
