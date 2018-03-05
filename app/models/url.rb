@@ -1,11 +1,9 @@
 class Url < ApplicationRecord
+  validates_presence_of :original
 
-  def self.generate_random_alpha_numeric_string
+  def self.generate_random_alpha_numeric_string(number)
+    number_of_chars = number - 1
     range = [*'0'..'9',*'A'..'Z',*'a'..'z']
-    (0..5).map{ range.sample }.join
-  end
-
-  def self.find_original_url(short_url)
-    Url.find_by(shortened: "http://#{short_url}")
+    (0..number_of_chars).map{ range.sample }.join
   end
 end
