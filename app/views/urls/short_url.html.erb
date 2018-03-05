@@ -1,0 +1,8 @@
+<h1>Shorten your url</h1>
+
+<%= form_tag("/short_url", remote: true, enforce_utf8: false) do %>
+    <%= label_tag(:url, "URL:") %>
+    <%= text_field_tag(:url) %>
+    <%= submit_tag("Get shortened url") %>
+<% end %>
+<div id="short_url"/>
