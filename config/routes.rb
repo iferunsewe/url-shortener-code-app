@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   post 'short_url', to: 'urls#short_url'
 
   get '/:short_url', to: 'urls#redirect_to_original'
+
+  root to: 'urls#short_url'
 end
