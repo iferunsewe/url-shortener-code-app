@@ -1,0 +1,8 @@
+var html =  <% if @url.errors.messages.empty? %>
+              '<p><%= @url.shortened %></p>';
+            <% else %>
+              "<p>The URL you've entered <%= @url.errors.messages.values[0].join('') %></p>";
+            <% end %>
+
+$('#short_url').html('');
+$('#short_url').append(html);
