@@ -31,4 +31,28 @@ RSpec.describe UrlsController, type: :controller do
       end
     end
   end
+
+  describe '#redirect_to_original' do
+    before do
+      headers = { "Content-Type" => "application/json" }
+      request.headers.merge! headers
+      post 'short_url', {params: {url: original_url}, format: :json}
+      parsed_json = JSON.parse(response.body)
+      short_url_without_http = parsed_json['short_url'].split('/')[-1]
+      get 'redirect_to_original', {params: {short_url: short_url_without_http}, format: :json}
+    end
+
+    let(:original_url) { 'http://www.looongurl.com' }
+
+    context 'GET request to short url to redirect to original url' do
+      it 'returns status code 302' do
+        expect(response).to have_http_status(302)
+      end
+
+      it 'redirects to original url' do
+        expect(response.body).to include original_url
+        expect(response.body).to include 'redirected'
+      end
+    end
+  end
 end
