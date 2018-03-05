@@ -10,4 +10,9 @@ class UrlsController < ApplicationController
       format.html
     end
   end
+
+  def redirect_to_original
+    @url = Url.find_original_url(params[:short_url])
+    redirect_to @url.original
+  end
 end
